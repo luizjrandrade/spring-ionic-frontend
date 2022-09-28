@@ -34,7 +34,7 @@ export class HomePage {
   login(){
     this.auth.authenticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization')); //teste de retorno do cabeçalho
+        this.auth.sucessfulLogin(response.headers.get('Authorization')); //teste de retorno do cabeçalho
         this.navCtrl.setRoot('CategoriasPage'); //entra na page 
      },
       error => {});
