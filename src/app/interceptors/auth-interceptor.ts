@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor{
         //para não o cabeçalho caso não for a api
         let N = API_CONFIG.baseUrl.length;
 
-        //testando se é url local
+        //testando se é url local, recortando a url
         let requestToAPI = req.url.substring(0, N) == API_CONFIG.baseUrl;
     
         //pode ser que não tenha o token, tem q testar
