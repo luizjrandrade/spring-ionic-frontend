@@ -37,11 +37,15 @@ export class ErrorInterceptor implements HttpInterceptor{
                 case 403:
                 this.handle403();
                 break;
+
+                default:
+                this.handleDefaultError(errorObj);
             }
 
             return Observable.throw(errorObj);
         }) as any;
     }
+
 
     //função auxiliar 
     handle403(){
@@ -63,6 +67,23 @@ export class ErrorInterceptor implements HttpInterceptor{
         });
         //apresenta o alert
         alert.present();
+    }
+
+    handleDefaultError(errorObj) {
+       //permite criar alerta
+       let alert = this.alertCtrl.create({
+        title: 'Erro ' + errorObj.status + ': ' + errorObj.error,
+        message: errorObj.message,
+        //para sair tem apertar o botão e não fora
+        enableBackdropDismiss: false,
+        buttons: [
+            {
+                text: 'Ok'
+            }
+        ]
+    });
+    //apresenta o alert
+    alert.present();
     }
 }
 
