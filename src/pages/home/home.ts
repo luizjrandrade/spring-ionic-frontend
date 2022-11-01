@@ -48,4 +48,8 @@ export class HomePage {
      },
       error => {});
     }
+
+    signup(){
+      this.navCtrl.push('SignupPage'); //para empilhar a pagina e exibir o botão de voltar
+    }
 }
